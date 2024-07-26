@@ -1,0 +1,32 @@
+{
+    "workbench.colorTheme": "SynthWave '84",  // Set your preferred theme
+    "workbench.colorCustomizations": {
+        "editor.background": "#282C34",  // Dark background
+        "editor.foreground": "#ABB2BF",  // Light foreground
+        "editor.lineHighlightBackground": "#2C313A",  // Line highlight background
+        "editor.selectionBackground": "#3E4451",  // Selection background
+        "editorCursor.foreground": "#528BFF"  // Cursor color
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "source.tidal",
+                "settings": {
+                    "foreground": "#56B6C2"  // Customize TidalCycles specific syntax
+                }
+            },
+            {
+                "scope": "keyword",
+                "settings": {
+                    "foreground": "#C678DD"  // Customize keyword color
+                }
+            },
+            {
+                "scope": "string",
+                "settings": {
+                    "foreground": "#98C379"  // Customize string color
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,94 @@
+// Step 1 - just make sounds
+
+d1 $ stack[
+    n "<c a f e>"
+        # sound "superpiano",
+    sound "bd sn:3 bd sn:3",
+    n "c a f e c a f e" 
+        # sound "supermandolin",
+    n (off 0.125 (|+ 7) "<c a f e>") 
+        # sound "supermandolin"
+] 
+
+d1 $ s "tech" <| n (run 1)
+
+d1 $ slow 4 $ s "sheffield" 
+
+d1 $ slow 8 $ s "tablex" <| n (run 3) 
+
+d1 $ s "techno" <| n (run 7)
+
+d1 $ sound "808bd:1 808bd:0"
+
+d1 $ sound "808ht:0 808ht:0 808ht:0 808ht:0 "
+
+d1 $ slow 8 $ s "tacscan" <| n (run 22) -- game sounds, some long
+
+d1 $ s "world" <| n (run 3) -- three kit hits, meh
+
+d1 $ sound "bd sn:3 bd sn:3"
+
+d1 $ n "c a f e c a f e" 
+    # sound "piano"
+
+d1 $ n (off 0.125 (|+ 7) "<a e g d>")
+    # sound "superpiano"
+
+
+d1 $ sound "bd:1 sd:1"
+
+d1 $ n "0 3 9 ~ 3 ~ 1 2" # sound "arpy"
+        # crush 3
+
+d1 $ n "0" # sound "break"
+        # crush 3
+
+hush
+
+
+//  playing with mininotation, getting more fun rhythms with subsequences
+//
+
+setcps 0.55
+
+d1 $ n "[0 7] ~ [1 3 1] 2 " # sound "kick"
+
+d1 silence
+    
+d2 $ n "~ 4 ~ ~ " # sound "clap"
+        # crush 2 # room 0.7 # sz 0.9
+
+d2 silence
+
+d3 $ n "[1 [3 3 3] 1] [1 3 1] [1 [3 3 3] 1] [1 ~ 1]" # sound "bshihat"
+        
+d3 silence
+
+d4 $ n "-10 [-2 -2 -2] -4 -5" # sound "arpy"
+        # crush 2 # room 1 # sz 1
+
+d4 silence
+
+d5 $ n "-10 [-2 -2 -2] -4 -5" # sound "arpy"
+        # crush 2 # room 0.8 # sz 0.8
+
+d5 silence
+
+d6 $ s "supersaw" # n "d2 d3" # cutoff (range 100 1000 $ slow 4 sine)
+
+d6 silence
+
+d7 $ stack[
+    s "supersaw" # n "d2 d3" # cutoff (range 100 1000 $ slow 6 sine),
+    n "~ 4 ~ ~ " # sound "clap"
+        # crush 2 # room 0.7 # sz 0.9,
+    n "[0 7] ~ [1 3 1] 2 " # sound "kick"
+]
+
+d7 silence
+
+hush
+
+
+// 
+//
