@@ -65,7 +65,7 @@ d3 $ n "[1 [3 3 3] 1] [1 3 1] [1 [3 3 3] 1] [1 ~ 1]" # sound "bshihat"
 d3 silence
 
 d4 $ n "-10 [-2 -2 -2] -4 -5" # sound "arpy"
-        # crush 2 # room 1 # sz 1
+        # crush 2 # room 0 # sz 0
 
 d4 silence
 
@@ -91,4 +91,135 @@ hush
 
 
 // 
+// moody little loop - off kilter rhythms
+
+
+setcps 0.55
+
+d1 $ stack[
+    s "bd hh sd hh bd/1.5",
+    n "[2 1]/1.3 [1 3]/2.3" # sound "bshihat" # room 0.7 # size 0.7,
+    s "supersquare" # n "<a2 a2 e2 f2>" # cutoff (range 100 2000 $ slow 5 sine) 
+    # room 0.8 # size 0.9
+    # pan 0.5
+]
+
+hush
+
+
+
+setcps 0.5625
+
+setcps 0.65
+
+
+
+// 
+-- kryananda arpeggions yt vd code
+
+
+d1 $ stack[
+    s "gabba*4" # gain 1.3, 
+    s "hh*8" # gain 1.7,
+    s "[~cp]*2" # gain 1.7
+]
+
+d2 $ n "1" # s "sine"
+
+d4 
+$ whenmod 16 4 (|+| 3)
+$ jux (rev.(# s "")).chunk 4 (iter 4)
+$ off 0.125 (|+| 12) 
+$ off 0.25 (|+| 7) 
+$ "[d1(3,8) f1(3,8) e1(3,8,2) a1(3,8,2)]/2" # s "supersquare"
+    # room 0.5 # size 0.6 # lpf (range 200 8000 $ slow 2 $ sine)
+    # resonance (range 0.03 0.6 $ slow 2.3 $ sine)
+    # pan (range 0.1 0.9 $ rand) 
+
+hush
+
+
+d1 $ stack[
+    s "gabba*4" # gain 1.3, 
+    s "hh*16" # gain 1.7,
+    s "[~cp]*2" # gain 1.7
+]
+
+
+d5
+$ whenmod 16 4 (|+| 3)
+$ jux (rev.(# s "jv")).chunk 4 (iter 4)
+$ off 0.125 (|+| 12) 
+$ off 0.25 (|+| 7) 
+$ "[d2(3,8) f2(3,8) e2(3,8,2) a2(3,8,2)]/2" # s "supersquare"
+    # room 0.5 # size 0.6 # lpf (range 200 8000 $ slow 2 $ sine)
+    # resonance (range 0.03 0.6 $ slow 2.3 $ sine)
+    # pan (range 0.1 0.9 $ rand) # gain 0.8
+
+d5
+
+hush
+
+
+
+
+
+
 //
+// some dnb style drums with low rumbly texture 
+
+
+setcps 1.4
+
+d1 $ stack[
+    s "[bd:1 ~ ~ ~ ~ bd ~ ~]/2" # gain 1.3, 
+    s "~ ~ ~ ~ cp ~ ~ ~" # gain 1 # room 0.5 # size 0.8,
+    s "hh*8" # gain 1.3 # pan (range 0.1 0.9 $ rand)
+] 
+
+d2
+$ whenmod 16 4 (|+| 15)
+$ jux (rev.(# s "wobble")).chunk 4 (iter 4)
+$ off 0.125 (|+| 12) 
+$ off 0.25 (|+| 7) 
+$ n "[d2(3,8) f2(3,8) e2(3,8,2) a2(3,8,2)]/2" # s "supersquare"
+    # room 0.5 # size 0.6 # lpf (range 200 8000 $ slow 2 $ sine)
+    # resonance (range 0.03 0.6 $ slow 2.3 $ sine)
+    # pan (range 0.1 0.9 $ rand)
+
+hush
+
+
+
+
+
+
+
+
+
+d4 $ off 0.125 (|+ 12) $ "c a f e" # s "supersquare"
+
+d4 silence
+
+d1 $ slow 2 $ 
+  n (off 0.25 (+12) $ off 0.125 (+7) $ slow 2 "c(3,8) a(3,8,2) f(3,8) e(3,8,4)") 
+  # sound "superpiano"
+
+d2 $ every 3 (hurry 1.5) $ s "bd sn:3 bd hh sn bd hh:2" # n (run 8) # speed (irand 3 + 0.5)
+
+d2 $ slice 16 "[0 1 ~ 7 4 ~ 5 2]*3" $ sound "break"
+
+d2 silence
+
+
+d1 $ n (off 0.25 (+12) $ off 0.125 (+7) $ "<d f e a>") # sound "supermandolin"
+
+d1 $ off 0.1 (|+| 1) 
+   $ "d3 f3 e3 a3" # s "bass"
+
+d1 $ n "d3 f3 e3 a3" # s "supersquare"
+
+
+
+d1 $ n (off 0.125 (|+ 9) "<c a f e>") 
+        # sound "supermandolin"
