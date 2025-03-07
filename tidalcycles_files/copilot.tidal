@@ -1,0 +1,40 @@
+To get TidalCycles in VSCode to talk to SuperCollider, you need to follow these steps:
+
+1. **Install SuperCollider**: Download and install SuperCollider from [supercollider.github.io](https://supercollider.github.io/download).
+
+2. **Install TidalCycles**: Follow the installation instructions for TidalCycles from [tidalcycles.org](https://tidalcycles.org/docs/getting_started/Installation).
+
+3. **Install the TidalCycles extension for VSCode**: Open VSCode and install the TidalCycles extension from the Extensions marketplace.
+
+4. **Start SuperCollider and Boot the Server**:
+    - Open SuperCollider.
+    - Evaluate the following code in SuperCollider to boot the server:
+      ```plaintext
+      s.boot;
+      ```
+
+5. **Start SuperDirt in SuperCollider**:
+    - Evaluate the following code in SuperCollider to start SuperDirt:
+      ```plaintext
+      Quarks.install("SuperDirt");
+      s.waitForBoot {
+            ~dirt = SuperDirt(2, s);
+            ~dirt.loadSoundFiles;
+            s.sync;
+            ~dirt.start(57120, [0, 0]);
+      };
+      ```
+
+6. **Configure TidalCycles in VSCode**:
+    - Open your TidalCycles file in VSCode.
+    - Make sure you have the following lines at the beginning of your TidalCycles file to connect to SuperCollider:
+      ```plaintext
+      import Sound.Tidal.Context
+
+      tidal <- startTidal (superdirtTarget {oLatency = 0.1, oAddress = "127.0.0.1", oPort = 57120}) (defaultConfig {cFrameTimespan = 1/20})
+      ```
+
+7. **Evaluate TidalCycles Code**:
+    - In VSCode, select the TidalCycles code you want to evaluate and press `Shift + Enter` to send it to SuperCollider.
+
+Your TidalCycles code should now be able to communicate with SuperCollider and produce sound.
